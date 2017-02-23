@@ -1,0 +1,760 @@
+
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../../bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../../bower_components/iron-icon/iron-icon.html">
+<link rel="import" href="../../bower_components/paper-checkbox/paper-checkbox.html">
+
+<link rel="import" href="../../bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="../../bower_components/iron-collapse/iron-collapse.html">
+
+<link rel="import" href="../../bower_components/sc-style/sc-style.html">
+<link rel="import" href="../../bower_components/sc-iconset/sc-iconset.html">
+
+<dom-module id="dev-app">
+<link rel="import" href="../../bower_components/sc-style/sc-style.css" type="css">
+
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+
+
+    /* TOPBLOCK-STUFF!! */
+
+    .topblock {
+      /*padding: 120px;*/
+      padding-top: 10vh;
+      padding-left: 10vw;
+      padding-right: 10vw;
+      padding-bottom: 8vh;
+    }
+    .topblock h1 {
+      max-width: 700px;
+      font-size: 62px;
+      line-height: 66px
+    }
+    .topblock a {
+      color: var(--sc-blue);
+      border-bottom: 1px dotted var(--sc-blue);   
+    }
+    .backlink {
+      padding: 13px 18px 13px 18px;
+    }
+
+
+    /* FOOTER-STUFF!! */
+
+    .linkblocks {
+      padding-top: 10vh;
+      padding-left: 10vw;
+      padding-right: 10vw;
+      padding-bottom: 8vh;
+    }
+
+    .linkblok_one {
+      @apply(--layout-vertical);
+      @apply(--layout-start-justified);     
+      @apply(--layout-start);    
+      @apply(--layout-flex);
+      min-width:  300px;      
+    }
+
+    .linkblok_two {
+      @apply(--layout-vertical);
+      @apply(--layout-start-justified);     
+      @apply(--layout-end); 
+      min-width:  300px;  
+      max-width:  500px; 
+      margin-top: 0px; 
+    }
+
+
+    .linkblok_one a {
+      font-family: montserratlight;
+      -webkit-font-smoothing: antialiased;
+      font-weight: 100;  
+
+      font-size: 12px;
+      font-weight: 300;
+      line-height: 14px;
+      -webkit-margin-before:4px;
+      -webkit-margin-after:4px;
+      -webkit-margin-start:0em;
+      -webkit-margin-end:0em;
+      margin:4px 0px 4px 0px;
+
+      color: var(--sc-yellow);
+      text-decoration: none;
+      outline: none;
+      border-bottom: 1px dotted var(--sc-yellow);
+    }
+
+    .linkblok_one a:visited {
+      color: var(--sc-yellow);
+      text-decoration: none;
+      outline: none;
+      border-bottom: 1px dotted var(--sc-yellow);
+    }
+
+    .linkblok_two a {
+      color: var(--sc-grey2);
+      border-bottom: 1px dotted var(--sc-grey2);   
+    }
+
+    .linkblok_two a:visited {
+      color: var(--sc-grey2);
+      border-bottom: 1px dotted var(--sc-grey2);      
+    }
+
+    .logoicon {
+      margin-right: 10px;
+    }
+
+    .logobtn {
+      margin-bottom: 40px;
+      padding-bottom: 40px;
+      border-bottom: 2px dotted rgba(255,255,255,0.05);
+    }
+
+    .logobtn paper-button{
+      background-color: rgba(255,255,255,0.025);
+    }
+
+    .otherlinkstxt {
+      opacity: 0.5;
+    }
+
+
+
+
+
+    /* SPECIFIC-STUFF!! */
+
+
+    .part {
+      padding-top: 6vh;
+      padding-left: 10vw;
+      padding-right: 10vw;
+      padding-bottom: 6vh;
+      border-top: 2px dotted rgba(0,0,0,0.075);
+
+    }
+
+    .part h2 {
+/*      font-size: 30px;
+      line-height: 34px;*/
+    }
+
+/*    .devprinciples ul {
+      list-style-type: decimal;
+
+    }
+
+    .devprinciples li {
+      font-size: 20px;
+      line-height: 22px;
+      margin-bottom: 10px;
+    }
+*/
+      .devprinciple {
+
+      }
+
+      .devprinciple_tittle {
+      font-size: 18px;
+      line-height: 22px;
+      color: #4D4D4D;
+      }
+
+      .devprinciple_descr {
+/*        box-sizing:border-box;
+        padding-left: 15px;*/
+
+      }
+      .devprinciple_nmbr {
+        margin-right: 8px;
+        font-size: 40px;
+        line-height: 44px;
+      }
+
+
+
+
+    .txtmaxwidth {
+      width: 100%;
+      max-width: 900px;
+      min-width: 290px;
+    }
+
+
+    .ingredients {
+      @apply(--layout-horizontal);
+      @apply(--layout-start-justified);     
+      @apply(--layout-center); 
+      @apply(--layout-wrap); 
+
+    }
+
+
+    .ingredient {
+      @apply(--layout-horizontal);
+      @apply(--layout-start-justified);     
+      @apply(--layout-center); 
+      box-sizing:border-box;
+      padding: 20px;
+      margin: 4px 15px 4px 0px;
+    }
+
+    .ingredient_img {
+      width: 40px;
+      height: 40px; 
+      min-width: 40px;
+      min-height: 40px;
+      margin-right: 10px; 
+    }
+
+    .ingredient_img img {
+      width: 100%;
+      height: 100%;
+ 
+    }
+
+
+    .bigger {
+      font-size: 24px;
+      line-height: 28px;
+    }
+
+
+
+  .components {
+    box-sizing:border-box;
+    padding-left: 15px;
+  }
+
+  .component {
+
+  }
+
+  .component_title {
+    box-sizing:border-box;
+    padding: 18px 20px 18px 22px;
+    background-color: var(--sc-grey1);
+    border-left: 2px solid var(--sc-grey4);
+    display: inline-block;
+  }
+
+  .title {
+    font-size: 18px;
+  }
+
+  .component_contentpart {
+    box-sizing:border-box;
+    padding-left: 25px;
+    border-left: 2px solid var(--sc-grey2);
+    padding-top: 18px;
+  }
+  .component_contentpart ul {
+
+  -webkit-margin-before: 0.25em;
+    -webkit-margin-after: 0.25em;
+  }
+  .relcomp {
+    box-sizing:border-box;
+    padding: 6px 8px 6px 8px;
+    margin-right: 8px;
+
+  }
+
+  .checkers paper-checkbox {
+    margin-right: 30px;
+  }
+/*
+  .fdescr {
+    font-size: 13px;
+    line-height: 13px;
+  }*/
+
+
+  @media all and (min-width: 0) and (max-width: 500px) {
+
+      .linkblok_one {
+        @apply(--layout-vertical);
+        @apply(--layout-start-justified);     
+        @apply(--layout-start);   
+       -ms-flex: none;
+        -webkit-flex: none;
+        flex: none;
+      }
+
+      .linkblok_two {
+        @apply(--layout-vertical);
+        @apply(--layout-start-justified);     
+        @apply(--layout-start);    
+        margin-top: 30px; 
+      }
+
+      .linkblocks {
+      padding-top: 8vh;
+      padding-left: 10vw;
+      padding-right: 10vw;
+      padding-bottom: 8vh;
+
+      }
+
+      .logobtn {
+        margin-bottom: 20px;
+        padding-bottom: 20px;
+        border-bottom: none;
+      }
+
+
+      .topblock {
+        padding: 17vw 10vw 10vw 10vw;
+      }
+   
+      .topblock h1 {
+        max-width: 400px;
+        font-size: 42px;
+        line-height: 42px
+      }
+
+      .part_title {
+          font-size: 34px;
+        line-height: 34px    
+      }
+
+      .devprinciple_tittle {
+        font-size: 16px;
+        line-height: 18px;
+      }
+
+    }
+
+
+    </style>
+
+
+    <div class="totalwidth vertic centercenter basestructure">
+      <div class="totalwidth vertic centercenter">
+        <div class="totalwidth vertic start centerjust topblock">
+          <p class="bold grey3 sc_title">Swarm City</p>
+          <h1 class="bold grey3">Development</h1>
+          <div class="whitespace"></div>
+          <p class="maxwidth reg grey2">If you're looking for the technical side of <a href="https://swarm.city/" target="_blank">swarm.city</a>, you are in the right place! Find out below how we are developping this great city. Or just jump to our <a href="https://github.com/swarmcity" target="_blank"> Swarm City github</a> to view the actual code.</p>
+        </div>
+      </div>
+
+
+      <div class="part vertic start startjust totalwidth">
+        <h2 class="ultralight grey3 part_title">Development principles</h2>
+          <div class="whitespace"></div>
+          <p class="grey2 reg txtmaxwidth">These principles are the checks and balances in everything we build. </p>
+          <div class="whitespace"></div>
+
+          <div class="devprinciple">
+            <p class="devprinciple_tittle grey4 bold">It's all about the token</p>
+            <div class="devprinciple_descr">
+              <p class="grey4">
+                When in doubt, ask: "Is this increasing the value of the token?""
+              </p>
+            </div>
+            <div class="whitespace"></div>
+            <div class="minispace"></div>
+          </div>
+
+          <div class="devprinciple">
+            <p class="devprinciple_tittle grey4 bold">No single point of failure</p>
+            <div class="devprinciple_descr">
+              <p class="grey4">
+                No central servers, central components<br>
+                Front end runs on any device<br>
+                Front end is easily shareable<br>
+              </p>
+            </div>
+            <div class="whitespace"></div>
+            <div class="minispace"></div>
+          </div>
+
+          <div class="devprinciple">
+            <p class="devprinciple_tittle grey4 bold">100% transparency</p>
+            <div class="devprinciple_descr">
+              <p class="grey4">
+                Transactions are registered on public blockchain
+              </p>
+            </div>
+            <div class="whitespace"></div>
+            <div class="minispace"></div>
+          </div>
+
+          <div class="devprinciple">
+            <p class="devprinciple_tittle grey4 bold">100% privacy</p>
+            <div class="devprinciple_descr">
+              <p class="grey4">
+                End to end encryption<br>
+                Encrypted data storage<br>
+                Multiple identities
+              </p>
+            </div>
+            <div class="whitespace"></div>
+            <div class="minispace"></div>
+          </div>
+
+          <div class="devprinciple">
+            <p class="devprinciple_tittle grey4 bold">Open Source</p>
+            <div class="devprinciple_descr">
+              <p class="grey4">
+                Everything we build is open source and can be verified by anyone.<br>
+                There is no proprietary software, embedded widgets or other solutions.<br>
+                The app is verifiable secure and connects only to the eth and ipfs nodes.
+              </p>
+            </div>
+            <div class="whitespace"></div>
+            <div class="minispace"></div>
+          </div>
+
+          <div class="devprinciple">
+            <p class="devprinciple_tittle grey4 bold">We believe in Good Design</p>
+            <div class="devprinciple_descr">
+                <a href="https://www.vitsoe.com/us/about/good-design">https://www.vitsoe.com/us/about/good-design</a>
+            </div>
+            <div class="whitespace"></div>
+            <div class="minispace"></div>
+          </div>
+
+          <div class="devprinciple">
+            <p class="devprinciple_tittle grey4 bold">Who spots the problem is probably best fit to solve it</p>
+            <div class="devprinciple_descr">
+                <p class="grey4">If you feel like something is going wrong, or something is missing, you are probably the best person to add value to this topic. </p>
+            </div>
+            <div class="whitespace"></div>
+            <div class="minispace"></div>
+          </div>
+
+          <div class="devprinciple">
+            <p class="devprinciple_tittle grey4 bold">Being accountable is not a task</p>
+            <div class="devprinciple_descr">
+                <p class="grey4">It’s a state of being. You don’t get paid for being accountable. You create value for yourself and the project because you feel it’s the right thing to do.<br>You might get paid to make sure you can focus all or some of your time on the project. </p>
+            </div>
+            <div class="whitespace"></div>
+            <div class="minispace"></div>
+          </div>
+<!--           <div class="devprinciple">
+            <p class="devprinciple_tittle grey4 boldold"><span class="devprinciple_nmbr ultralight">2.</span> All is stored locally</p>
+            <div class="minispace"></div>
+            <div class="minispace"></div>
+            <p class="grey3 devprinciple_descr">Cras lobortis porttitor vehicula. Nunc sit amet velit et dui pulvinar convallis. Etiam porta pretium libero a dignissim. Suspendisse non sapien erat.</p>
+          <div class="whitespace"></div>
+          <div class="minispace"></div>
+          </div>
+ -->
+
+      </div>
+
+      <div class="part vertic start startjust totalwidth">
+        <h2 class="ultralight grey3 part_title">Development ingredients</h2>
+          <div class="whitespace"></div>
+          <p class="grey2 reg txtmaxwidth">These are the essential ingredients of the Swarm City development. <!-- Check out the code of our current release, <a href="https://github.com/swarmcity/sc-terminal" target="_blank"> Terminal</a> to see how we make these elements work together. --></p>
+          <div class="whitespace"></div>
+          <div class="ingredients totalwidth">
+            <paper-button class="ingredient shadow bigbtn lighter" noink>
+              <div class="ingredient_img">
+                <img src="../images/ETHEREUM-ICON_Black.png">
+              </div>
+              <p class="semibold grey3">Ethereum Smart Contracts (Solidity)</p>
+            </paper-button>
+
+            <paper-button class="ingredient shadow bigbtn lighter" noink>
+              <div class="ingredient_img">
+                <img src="../images/ETHEREUM-ICON_Black_inverted.png">
+              </div>
+              <p class="semibold grey3">Ethereum Whisper-protocol</p>
+            </paper-button>
+
+            <paper-button class="ingredient shadow bigbtn lighter" noink>
+              <div class="ingredient_img">
+                <img src="../images/Ipfs-logo-1024-ice-text.png">
+              </div>
+              <p class="semibold grey3">IPFS-protocol</p>
+            </paper-button>
+
+            <paper-button class="ingredient shadow bigbtn lighter" noink>
+              <div class="ingredient_img">
+                <img src="../images/polymer-logo.png">
+              </div>
+              <p class="semibold grey3">Google Polymer Webcomponents</p>
+            </paper-button>
+          </div>
+      </div>
+
+
+      <div class="part vertic start startjust totalwidth whiteback">
+          <div class="whitespace"></div>
+
+        <h2 class="ultralight blue part_title">Boardwalk Blueprint</h2>
+          <div class="whitespace"></div>
+          <p class="grey2 reg txtmaxwidth">Boardwalk is the next release of Swarm City, and this is its blueprint.</p>
+          <div class="whitespace"></div>
+          <div class="minispace"></div>
+
+          <p class="bigger grey3 ultralight">Vision</p>
+          <p class="grey3 txtmaxwidth">A true peer to peer shared economy where people are free to transact SWT tokens for a specific request. Swarm Citizens are building a reputation for themselves by using Swarm.city to do their transactions. </p>
+
+          <div class="whitespace"></div>
+          <div class="minispace"></div>
+
+          <p class="bigger grey3 ultralight">Mission</p>
+          <p class="grey3 txtmaxwidth">Swarm Citizens are transacting SWT tokens in a specific context, for a specific task. A successful deal results in the creation and distribution of specific context reputation tokens that are distributed over the transacting parties. <br>
+          The tool to do this: a progressive web app, connecting to eth and ipfs nodes. 
+          Building further on the Terminal release codebase.  </p>
+
+
+
+<!--           <div class="whitespace"></div>
+          <div class="whitespace"></div>
+          <p class="txtmaxwidth reg">Boardwalk GUI:<br><span class="light grey3">Most of the UI is already developped</span></p> 
+          <div class="whitespace"></div>
+          <video controls>
+            <source src="https://www.youtube.com/embed/lIywQTnyRyI">
+          </video> -->
+
+          <div class="whitespace"></div>
+          <div class="minispace"></div>
+
+<!--           <p class="bigger grey3 ultralight">Ingredients</p>
+          <div class="whitespace"></div>
+          <p class="txtmaxwidth title bold grey4">Whisper</p> 
+          <div class="minispace"></div>
+          <p class="reg"> Topics<br>
+            <div class="component_contentpart">
+              <p class="txtmaxwidth">
+              Geohash provided by device / Range provided by user<br>
+              Pubkey user<br>
+              HashtagContractAddress<br>
+              Swarm City Instance uuid
+            </p>
+            </div>
+          <div class="whitespace"></div>
+
+          <p class="reg"> Temporary topics<br>
+            <div class="component_contentpart">
+              <p class="txtmaxwidth">
+              Shortcode
+            </p>
+            </div>
+          <div class="whitespace"></div>
+          <div class="whitespace"></div>
+          <div class="whitespace"></div>
+ -->
+
+
+          <p class="bigger grey3 ultralight">Ingredients</p>
+          <div class="minispace"></div>
+          <div class="minispace"></div>
+
+          <p class="grey3 txtmaxwidth"><span class="bold grey4">Smart Contracts</span><br>We write smart contracts in Solidity and use Truffle as development / test suite.
+          Our tokencontracts are MiniMe contracts. We can switch controllers in these contracts, making sure they are upgradable in the future.
+          In this technical description we will only mention the functions that are necessary to make Boardwalk work.</p>
+
+          <div class="whitespace"></div>  
+          <div class="whitespace"></div>
+
+          <div class="components txtmaxwidth">
+
+            <p class="component_title reg">SWT Tokencontract<br><a class="bold small" href="https://github.com/swarmcity/sc-terminal/tree/master/src/contracts">https://github.com/swarmcity/sc-terminal/tree/master/src/contracts</a></p>
+            <div class="component_contentpart">
+            <p class="reg grey4">Function: Transfer()</p>
+            <p class="grey3">.....</p>
+            </div>
+            <div class="whitespace"></div>
+            <div class="whitespace"></div>
+            <div class="whitespace"></div>
+
+
+            <p class="component_title reg">HashtagController<br><a class="bold small" href="https://github.com/swarmcity/sc-terminal/tree/master/src/contracts">https://github.com/swarmcity/sc-terminal/tree/master/src/contracts</a></p>
+            <div class="component_contentpart">
+            <p class="reg grey4">Function: createBabyHashtag()</p>
+            <p class="grey3">The HashtagController deploys a new babyHashtagContract.  
+            When a deal is made, both parties send SWT to the babyHashtagContract. There, the swt is stored on the internal balance. Every deal is stored as an object on IPFS. The deal’s IPFS hash is the unique identifier in the contract’s array of deals.</p>
+            
+            <div class="whitespace"></div>
+            <div class="minispace"></div>
+            <div class="minispace"></div>
+
+            <p class="reg grey4">Function: babyhashTXstateChange()</p>
+            <p class="grey3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec dapibus lacus ipsum, vitae maximus nibh euismod mattis. Fusce venenatis ligula eu congue pellentesque. Vivamus semper molestie nunc, a porttitor sapien. Phasellus lacinia facilisis nisl.</p>
+            
+
+
+            <p class="reg grey4">Read: array of deployed hashtags</p>
+            <p class="grey3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec dapibus lacus ipsum, vitae maximus nibh euismod mattis. Fusce venenatis ligula eu congue pellentesque. Vivamus semper molestie nunc, a porttitor sapien. Phasellus lacinia facilisis nisl.</p>
+            <div class="whitespace"></div>
+
+
+            <p class="reg grey4">Read: nr. Of tx on hashtags</p>
+            <p class="grey3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec dapibus lacus ipsum, vitae maximus nibh euismod mattis.</p>   
+
+            <div class="minispace"></div>
+
+
+            <p class="reg grey4">Read: nr of tx on geohash</p>
+            <p class="grey3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec dapibus lacus ipsum, vitae maximus nibh euismod mattis.</p>   
+            <div class="minispace"></div>
+
+
+            <p class="reg grey4">Read: Array of deployed babyhashtagcontracts with localization</p>
+            <p class="grey3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec dapibus lacus ipsum, vitae maximus nibh euismod mattis.</p>   
+            
+            </div>
+            <div class="whitespace"></div>
+          </div>
+
+          <div class="fivespace"></div>
+
+          <p class="grey3 txtmaxwidth"><span class="bold grey4">Webcomponents</span><br>Een dik vet schema</p>
+
+          <div class="whitespace"></div>  
+          <div class="whitespace"></div>
+
+          <div class="components txtmaxwidth">
+            <p class="component_title reg"> sc-whisperer<br><a class="bold small" href="https://github.com/swarmcity/sc-whisperer">github.com/swarmcity/sc-whisperer</a></p>
+            <div class="component_contentpart">
+              <p class="grey3">Nulla ut ipsum vel est finibus commodo. Aliquam molestie ut neque non fringilla. Vestibulum leo ante, malesuada in condimentum nec, finibus et ipsum. Vestibulum ac ante ac nulla blandit dictum. Duis sem nibh, semper sed commodo eget, cursus sit amet erat. Pellentesque nec malesuada sem. In nec nulla sed ligula condimentum malesuada pharetra at tortor.</p>
+              <div class="whitespace"></div>
+              <p class="reg grey4">Works with:</p>
+              <div class="minispace"></div>
+              <div class="totalwidth horizont center startjust wrap">
+                <p class="grey5 relcomp grey1back">sc-component1</p>
+                <p class="grey5 relcomp grey1back">sc-component1</p>
+                <p class="grey5 relcomp grey1back">sc-component1</p>
+                <p class="grey5 relcomp grey1back">sc-component1</p>
+              </div>
+              <div class="whitespace"></div>
+              <p class="reg grey4">Status:</p>
+              <div class=" totalwidth horizont start startjust wrap checkers">
+                <paper-checkbox checked class="bold">UX</paper-checkbox>
+                <paper-checkbox disabled>Functional</paper-checkbox>
+                <paper-checkbox disabled>Tested</paper-checkbox>
+                <paper-checkbox disabled>In Use</paper-checkbox>
+              </div>
+            </div>
+          </div>
+
+            <div class="whitespace"></div>
+            <div class="minispace"></div>
+            <div class="minispace"></div>
+
+
+
+
+
+            <div class="whitespace"></div>
+
+          <div class="fivespace"></div>
+
+          <p class="grey3 txtmaxwidth"><span class="bold grey4">Nodes & Other Infrastructure</span><br>Swarm.city domain managed on cloudflare</p>
+          <div class="whitespace"></div>
+          <div class="whitespace"></div>
+
+          <div class="components txtmaxwidth">
+            <p class="component_title reg"> ETH node<!-- <br><a class="bold small" href="https://github.com/swarmcity/sc-whisperer">github.com/swarmcity/sc-whisperer</a> --></p>
+            <div class="component_contentpart">
+              <p class="grey3">https://eth.swarm.city<br>
+                An Ubuntu server running geth<br>
+                Geth API accessible over https </p>
+            </div>
+          </div>
+             
+            <div class="whitespace"></div>
+            <div class="minispace"></div>
+            <div class="minispace"></div>
+
+          <div class="components txtmaxwidth">
+            <p class="component_title reg">IPFS node<!-- <br><a class="bold small" href="https://github.com/swarmcity/sc-whisperer">github.com/swarmcity/sc-whisperer</a> --></p>
+            <div class="component_contentpart">
+              <p class="grey3">https://ipfs.swarm.city<br>
+              An Ubuntu server running IPFS Daemon<br>
+              APi accessible over https</p>
+            </div>
+          </div>
+             
+            <div class="whitespace"></div>
+            <div class="minispace"></div>
+            <div class="minispace"></div>
+                     
+          <div class="components txtmaxwidth">
+            <p class="component_title reg">Frontend serving<!-- <br><a class="bold small" href="https://github.com/swarmcity/sc-whisperer">github.com/swarmcity/sc-whisperer</a> --></p>
+            <div class="component_contentpart">
+              <p class="grey3">https://swarm.city<br>
+              https://next.swarm.city<br>
+              IPFS<br>
+              Netlify<br>
+              Python -m SimpleHTTPserver</p>
+            </div>
+          </div>
+
+
+    </div>
+
+
+      <div class="totalwidth vertic startjust start grey4back linkblocks">
+
+        <div class="totalwidth logobtn grey4back">
+          <paper-button class="grey4back shadow yellow">
+            <iron-icon icon="sc-icons:logonew" class="yellow medium logoicon">Swarmcity-logo</iron-icon>
+            visit swarm.city
+          </paper-button>
+        </div>
+
+
+        <div class="totalwidth horizont wrap centerjust start grey4back">
+          <div class="linkblok_one">
+            <!-- <div class="toswarmcityapp">
+              <iron-icon icon="sc-icons:logonew" class="big grey2 logoicon">Swarmcity-logo</iron-icon>
+            </div> -->
+            <p class="bold otherlinkstxt yellow small">Other Swarm City links</p>
+            <div class="minispace"></div>
+
+<!--             <a target="_blank" href="http://thisis.swarm.city">What is Swarm City?</a> -->
+
+
+            <a target="_blank" href="http://getactivein.swarm.city">Get active in Swarm City</a>
+            <!-- <a target="_blank" href="http://swt.swarm.city">About the Swarm City Token</a> -->
+            <a target="_blank" href="http://advisors.swarm.city">Swarm City Advisors</a>
+            <!-- <a target="_blank" href="http://dev.swarm.city">Development</a>
+            <a target="_blank" href="http://releaseroadmap.swarm.city">Release Roadmap</a> -->
+            <a target="_blank" href="http://faq.swarm.city">FAQ</a>
+          </div>
+          <div class="linkblok_two">
+            <p class="bold grey3 small">Find Swarm City on</p>
+            <div class="minispace"></div>
+            <a href="https://swarm-slack-invite.herokuapp.com/" target="_blank">Slack</a>
+            <a href="https://medium.com/swarm-city-times" target="_blank">Medium</a>
+            <a href="https://github.com/swarmcity" target="_blank">Github</a>
+            <a href="https://twitter.com/SwarmCityHive" target="_blank">Twitter</a>
+            <a href="https://www.youtube.com/channel/UCsHBWn_ytZ3xdMbTyYe5Ifg" target="_blank">Youtube</a>
+            <a href="https://www.facebook.com/groups/SwarmCity/" target="_blank">Facebook</a>
+
+          </div>
+
+      </div>
+  </template>
+
+  <script>
+    Polymer({
+
+      is: 'dev-app',
+
+      properties: {
+        prop1: {
+          type: String,
+          value: 'dev-app',
+        },
+      },
+
+    });
+  </script>
+</dom-module>
